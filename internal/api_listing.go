@@ -16,7 +16,16 @@ func ListingAPI(db *gorm.DB) gin.HandlerFunc {
 		offset, limit := paginationParams.GetLimitOffset()
 		db = db.Offset(offset).Limit(limit)
 
+		db.Where("status in (?)", []string{StatusActive, StatusInactive})
+		db.Order("id DESC")
+
 		var customers []Customer
+		var count int64
+		if err := db.Model(&Customer{}).Count(&count).Error; err != nil {
+			c.JSON(500, gin.H{"error": "Failed to count customers"})
+			return
+		}
+		paginationParams.TotalCount = count
 
 		if err := db.Find(&customers).Error; err != nil {
 			c.JSON(500, gin.H{"error": "Failed to retrieve customers"})

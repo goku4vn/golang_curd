@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 
-func ViewAPI(db *gorm.DB) gin.HandlerFunc {
+func DeleteAPI(db *gorm.DB) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		id, err := uuid.Parse(c.Param("id"))
 		if err != nil {
@@ -16,15 +16,14 @@ func ViewAPI(db *gorm.DB) gin.HandlerFunc {
 		}
 
 		var customer Customer
-		if err := db.Where("status in (?)", []string{StatusActive, StatusInactive}).
-			First(&customer, id).Error; err != nil {
-			c.JSON(http.StatusNotFound, gin.H{"error": "Customer not found"})
+		if err := db.Delete(&customer, id).Error; err != nil {
+			c.JSON(http.StatusNotFound, gin.H{"error": err.Error()})
 			return
 		}
 		c.JSON(http.StatusOK, gin.H{
 			"status":  "success",
-			"message": "Customer retrieved successfully",
-			"data":    customer,
+			"message": "Customer deleted successfully",
+			"data":    nil,
 		})
 	}
 }

@@ -35,9 +35,12 @@ func main() {
 	v1 := r.Group("/v1")
 	{
 		customers := v1.Group("/customers")
+		customers.GET("", internal.ListingAPI(db))
 		customers.POST("", internal.CreateAPI(db))
 		customers.GET("/:id", internal.ViewAPI(db))
-		customers.GET("", internal.ListingAPI(db))
+		customers.PUT("/:id", internal.UpdateAPI(db))
+		customers.DELETE("/:id", internal.DeleteAPI(db))
+		customers.PUT("/:id/soft-delete", internal.SoftDeleteAPI(db))
 	}
 
 	// Get port from environment variable or use default

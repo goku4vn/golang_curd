@@ -1,8 +1,9 @@
 package internal
 
 type PaginationParams struct {
-	Page     int `json:"page" form:"page"`
-	PageSize int `json:"pageSize" form:"pageSize"`
+	Page       int   `json:"page" form:"page"`
+	PageSize   int   `json:"pageSize" form:"pageSize"`
+	TotalCount int64 `json:"totalCount" form:"totalCount"`
 }
 
 func (p *PaginationParams) GetLimitOffset() (offset int, limit int) {
