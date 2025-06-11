@@ -1,0 +1,205 @@
+type: collection.insomnia.rest/5.0
+name: Learn Golang
+meta:
+  id: wrk_f0e3ca56386b4f9aa0a5ffab338b9648
+  created: 1749480990778
+  modified: 1749602681766
+  description: ""
+collection:
+  - url: "{{domain}}/v1/customers"
+    name: Customer Create
+    meta:
+      id: req_258e18b441ba4747b4b95aa1f81ae15a
+      created: 1749519690011
+      modified: 1749602769467
+      isPrivate: false
+      description: ""
+      sortKey: -1749519690011
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "{% faker 'randomFullName' %}",
+        	"email": "{% faker 'randomEmail' %}",
+        	"status": "active"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{domain}}/ping"
+    name: Ping
+    meta:
+      id: req_22fc249f083d48158b27e04c3296af1c
+      created: 1749560029849
+      modified: 1749602781832
+      isPrivate: false
+      description: ""
+      sortKey: -1749519689961
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{domain}}/v1/customers/:id"
+    name: Customer View
+    meta:
+      id: req_8605c856f3ab4a78a5886f2a9c766b25
+      created: 1749563258564
+      modified: 1749607063371
+      isPrivate: false
+      description: ""
+      sortKey: -1749563258564
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    pathParameters:
+      - name: id
+        value: 01975c73-f2c0-7db7-861d-453943def48e
+  - url: "{{domain}}/v1/customers"
+    name: Customer Listing
+    meta:
+      id: req_0394999d26ec46f7bc23f6b1e7c2397f
+      created: 1749563430501
+      modified: 1749602721868
+      isPrivate: false
+      description: ""
+      sortKey: -1749541474287.5
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{domain}}/v1/customers/:id"
+    name: Customer Update
+    meta:
+      id: req_dd8c93f81e1e4d6192e3a6d1ccc979b2
+      created: 1749602844180
+      modified: 1749606289087
+      isPrivate: false
+      description: ""
+      sortKey: -1749519689986
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "{% faker 'randomFullName' %}"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    pathParameters:
+      - name: id
+        value: 01975c73-f2c0-7db7-861d-453943def48e
+  - url: "{{domain}}/v1/customers/01975a12-b608-7937-bf2f-f49c510c0cf8"
+    name: Customer Delete
+    meta:
+      id: req_1164cf1ff3024d1baa7765537fa3e219
+      created: 1749606888299
+      modified: 1749606895990
+      isPrivate: false
+      description: ""
+      sortKey: -1749552366425.75
+    method: DELETE
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{domain}}/v1/customers/:id/soft-delete"
+    name: Customer Soft Delete
+    meta:
+      id: req_cce486034001428cb4d3c0e2dedb411e
+      created: 1749607423735
+      modified: 1749607439767
+      isPrivate: false
+      description: ""
+      sortKey: -1749519689973.5
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "{% faker 'randomFullName' %}"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    pathParameters:
+      - name: id
+        value: 01975c73-f2c0-7db7-861d-453943def48e
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_ad93ea52fa0a38394932d5c6ce285a558a040ca9
+    created: 1749480990781
+    modified: 1749480990781
+environments:
+  name: Base Environment
+  meta:
+    id: env_ad93ea52fa0a38394932d5c6ce285a558a040ca9
+    created: 1749480990780
+    modified: 1749602703207
+    isPrivate: false
+  data:
+    domain: http://localhost:8080

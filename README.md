@@ -17,3 +17,8 @@ sudo go install github.com/air-verse/air@latest
 ```bash
 make dev
 ```
+
+### Client to test the API
+1. Download Insomnia from `https://insomnia.rest`
+
+2. Import the `golang_crud_insomnia` file in the root directory of this project.
